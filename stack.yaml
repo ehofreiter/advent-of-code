@@ -1,0 +1,10 @@
+snapshot: lts-22.43
+
+system-ghc: true
+install-ghc: false
+
+packages:
+  - .
+
+nix:
+  enable: false

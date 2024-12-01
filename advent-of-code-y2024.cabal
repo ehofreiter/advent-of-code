@@ -1,0 +1,51 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.37.0.
+--
+-- see: https://github.com/sol/hpack
+
+name:           advent-of-code-y2024
+version:        0.1.0.0
+description:    Please see the README on GitHub.
+homepage:       https://github.com/ehofreiter/advent-of-code#readme
+bug-reports:    https://github.com/ehofreiter/advent-of-code/issues
+author:         Eric W. Hofreiter
+maintainer:     Eric W. Hofreiter
+copyright:      2024 Eric W. Hofreiter
+license:        BSD3
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/ehofreiter/advent-of-code
+
+library
+  exposed-modules:
+      AdventOfCode
+  other-modules:
+      Paths_advent_of_code_y2024
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , mtl
+    , vector
+  default-language: GHC2021
+
+executable advent-of-code-y2024-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_advent_of_code_y2024
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      advent-of-code-y2024
+    , base >=4.7 && <5
+    , containers
+    , mtl
+    , vector
+  default-language: GHC2021
