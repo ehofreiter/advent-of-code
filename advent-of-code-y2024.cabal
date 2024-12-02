@@ -13,6 +13,7 @@ author:         Eric W. Hofreiter
 maintainer:     Eric W. Hofreiter
 copyright:      2024 Eric W. Hofreiter
 license:        BSD3
+license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md
@@ -24,6 +25,7 @@ source-repository head
 library
   exposed-modules:
       AdventOfCode
+      AdventOfCode2
   other-modules:
       Paths_advent_of_code_y2024
   hs-source-dirs:
