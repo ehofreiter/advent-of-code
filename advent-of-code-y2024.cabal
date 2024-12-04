@@ -27,6 +27,7 @@ library
       AdventOfCode
       AdventOfCode2
       AdventOfCode3
+      AdventOfCode4
   other-modules:
       Paths_advent_of_code_y2024
   hs-source-dirs:
