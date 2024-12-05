@@ -28,6 +28,7 @@ library
       AdventOfCode2
       AdventOfCode3
       AdventOfCode4
+      AdventOfCode5
   other-modules:
       Paths_advent_of_code_y2024
   hs-source-dirs:
@@ -42,6 +43,7 @@ library
     , containers
     , mtl
     , parsec
+    , split
     , text
     , vector
   default-language: GHC2021
@@ -64,6 +66,7 @@ executable advent-of-code-y2024-exe
     , containers
     , mtl
     , parsec
+    , split
     , text
     , vector
   default-language: GHC2021
