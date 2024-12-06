@@ -1,4 +1,6 @@
 module Main where
 
+import AdventOfCode6Day2
+
 main :: IO ()
-main = putStrLn "Hi!"
+main = run2

@@ -21,6 +21,10 @@ dependencies:
   - base >= 4.7 && < 5
   - bytestring
   - containers
+  - filepath
+  - indexed-traversable
+  - lens
+  - linear
   - mtl
   - parsec
   - split
