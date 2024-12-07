@@ -20,8 +20,8 @@ import Text.Read qualified as Read
 import Linear hiding (E)
 import Data.Foldable
 
-import Common
-import CoordVec qualified as CV
+import AoC.Common hiding (l, dataFolder, readData, readExample, readReal, answer)
+import AoC.CoordVec qualified as CV
 
 day :: Int
 day = 6

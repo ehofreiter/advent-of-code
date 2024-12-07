@@ -30,16 +30,18 @@ library
       AdventOfCode4
       AdventOfCode5
       AdventOfCode6
-      AdventOfCode6Day2
-      Common
-      CoordVec
+      AdventOfCode6Part2
+      AoC.Common
+      AoC.CoordVec
+      AoC.Y2024.D07.P1
+      AoC.Y2024.D07.P2
   other-modules:
       Paths_advent_of_code_y2024
   hs-source-dirs:
       src
   default-extensions:
-      OverloadedStrings
       LambdaCase
+      OverloadedStrings
   build-depends:
       attoparsec
     , base >=4.7 && <5
@@ -63,8 +65,8 @@ executable advent-of-code-y2024-exe
   hs-source-dirs:
       app
   default-extensions:
-      OverloadedStrings
       LambdaCase
+      OverloadedStrings
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       advent-of-code-y2024

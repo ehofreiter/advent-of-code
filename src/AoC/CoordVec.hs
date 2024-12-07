@@ -1,8 +1,4 @@
-{-# LANGUAGE FlexibleInstances #-}
-{-# LANGUAGE MultiParamTypeClasses #-}
-{-# LANGUAGE TupleSections #-}
-
-module CoordVec
+module AoC.CoordVec
   ( CoordVec
   , Coord
   , flattenCoord
@@ -24,7 +20,8 @@ module CoordVec
   , adjs8
   , adjCoords8
   , adjPairs8
-  ) where
+  )
+where
 
 import           Data.List.Split
 import           Data.Functor.WithIndex

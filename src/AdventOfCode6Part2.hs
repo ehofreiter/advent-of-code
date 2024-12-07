@@ -1,7 +1,4 @@
-{-# LANGUAGE LambdaCase #-}
-{-# LANGUAGE OverloadedStrings #-}
-
-module AdventOfCode6Day2 where
+module AdventOfCode6Part2 where
 
 import Control.Applicative ((<|>))
 import Data.Attoparsec.Text qualified as P
@@ -21,8 +18,8 @@ import Text.Read qualified as Read
 import Linear hiding (E)
 import Data.Foldable
 
-import Common
-import CoordVec qualified as CV
+import AoC.Common hiding (dataFolder, readData, readExample, readReal, l, answer)
+import AoC.CoordVec qualified as CV
 
 day :: Int
 day = 6
@@ -49,7 +46,7 @@ answer x = do
   print x
 
 ----------------------------------------
--- ghcid -T run1 src/AdventOfCode${day}.hs
+-- ghcid -T run2 src/AdventOfCode${day}.hs
 
 run2 :: IO ()
 run2 = do
@@ -58,30 +55,11 @@ run2 = do
   let spots = fmap spotFromChar <$> rows
   traverse_ l spots
   let sm = CV.fromLists spots
-  -- l spotsCV
-  -- l "----"
-  -- let pos0 = findStartPos spotsCV
-  -- l pos0
-  -- let st0 = St dir0 pos0 Set.empty
-  -- l st0
-  -- l "----"
-  -- let allSteps = takeWhile Either.isRight $ iterateM (stepSt spotsCV) (Right st0)
-  -- [final] <- pure . take 1 . dropWhile Either.isRight $ iterateM (stepSt spotsCV) (Right st0)
-  -- l final
-  -- traverse_ l allSteps
-  -- let x = doesItLoop spotsCV
-  -- l x
   let guards = allGuards sm
-  -- traverse_ l guards
-  -- l (Set.size $ Set.fromList guards)
-  -- l (doesItLoop sm)
   let walls = possibleWalls sm
-  -- traverse_ l walls
   let sms = flip addWall sm <$> Set.toList walls
   let loops = filter doesItLoop sms
   answer (length loops)
-  -- let result = -- Set.size $ Set.fromList $ fmap stPos $ Maybe.catMaybes allSteps
-  -- answer result
 
 addWall :: Pos -> SM -> SM
 addWall pos = imap (\p s -> if p == pos then W else s)

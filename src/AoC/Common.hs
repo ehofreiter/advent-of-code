@@ -1,6 +1,7 @@
 {-# LANGUAGE TupleSections #-}
-module Common where
+module AoC.Common where
 
+import System.FilePath
 import           Data.Foldable
 import           Data.List.Split
 import qualified Data.Map.Strict as Map
@@ -12,6 +13,27 @@ loadFile :: FilePath -> IO [String]
 loadFile filePath = do
   fileContents <- readFile filePath
   pure (lines fileContents)
+
+dataFolder :: Int -> FilePath
+dataFolder day = "data/input/day" <> show day
+
+readData :: Int -> FilePath -> IO String
+readData day file = readFile $ (dataFolder day) </> file
+
+readExample :: Int -> IO String
+readExample day = readData day "example.txt"
+
+readReal :: Int -> IO String
+readReal day = readData day "real.txt"
+
+l :: (Show a) => a -> IO ()
+--l _x = pure ()
+l = print
+
+answer :: (Show a) => a -> IO ()
+answer x = do
+  putStrLn $ "ANSWER:"
+  print x
 
 -- | Creates a histogram from a list of values, mapping the number of
 -- occurrences of each value in the given list.

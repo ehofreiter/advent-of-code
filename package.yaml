@@ -13,8 +13,8 @@ description: Please see the README on GitHub.
 language: GHC2021
 
 default-extensions:
-  - OverloadedStrings
   - LambdaCase
+  - OverloadedStrings
 
 dependencies:
   - attoparsec
