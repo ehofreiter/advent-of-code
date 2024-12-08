@@ -35,6 +35,8 @@ library
       AoC.CoordVec
       AoC.Y2024.D07.P1
       AoC.Y2024.D07.P2
+      AoC.Y2024.D08.P1
+      AoC.Y2024.D08.P2
   other-modules:
       Paths_advent_of_code_y2024
   hs-source-dirs:
