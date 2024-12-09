@@ -1,6 +1,7 @@
 module AoC.CoordVec
   ( CoordVec
   , Coord
+  , toSparseMap
   , flattenCoord
   , unflattenCoord
   , fromLists
@@ -44,6 +45,9 @@ instance FunctorWithIndex (V2 Int) CoordVec where
   imap f cv = overVec (Vec.imap f') cv
     where
       f' i = f (unflattenCoord cv i)
+
+toSparseMap :: CoordVec (Maybe a) -> [(Coord, a)]
+toSparseMap = mapMaybe id . toList . imap (\k ma -> (k, ) <$> ma)
 
 flattenCoord :: CoordVec a -> Coord -> Int
 flattenCoord cv (V2 x y) = x + y * colCount cv

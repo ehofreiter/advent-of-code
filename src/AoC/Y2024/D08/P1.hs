@@ -30,18 +30,18 @@ run = do
   rows <- lines <$> readReal day
   traverse_ l rows
   let gridCV = CV.fromLists rows
-  l gridCV
-  let antLocsCV = imap (\loc c -> (, [loc]) <$> charToAnt c) gridCV
-  let antLocs = Maybe.catMaybes $ CV.toList $ antLocsCV
-  -- l antLocs
-  let antLocsMap = Map.fromListWith (<>) $ antLocs
-  l antLocsMap
-  let size = length rows
-  l size
-  let antiNodes = Set.unions $ genAntiNodes size <$> Map.elems antLocsMap
-  l antiNodes
-  let result = Set.size antiNodes
-  answer result
+  -- l gridCV
+  let antLocs = CV.toSparseMap $ charToAnt <$> gridCV
+  -- let antLocs = Maybe.catMaybes $ CV.toList $ antLocsCV
+  l antLocs
+  -- let antLocsMap = Map.fromListWith (<>) $ antLocs
+  -- l antLocsMap
+  -- let size = length rows
+  -- l size
+  -- let antiNodes = Set.unions $ genAntiNodes size <$> Map.elems antLocsMap
+  -- l antiNodes
+  -- let result = Set.size antiNodes
+  -- answer result
 
 type Loc = CV.Coord
 
