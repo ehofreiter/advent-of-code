@@ -10,8 +10,8 @@ import Data.List qualified as List
 import Data.List.Split qualified as Split
 import Data.Map.Strict qualified as Map
 import Data.Maybe qualified as Maybe
-import Data.Set qualified as Set
 import Data.Sequence qualified as Seq
+import Data.Set qualified as Set
 import Data.Text qualified as T
 import System.FilePath
 import Text.Read qualified as Read
