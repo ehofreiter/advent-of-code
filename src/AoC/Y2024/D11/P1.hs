@@ -2,6 +2,7 @@ module AoC.Y2024.D11.P1 where
 
 import Control.Applicative ((<|>))
 import Data.Attoparsec.Text qualified as P
+import Data.Bifunctor
 import Data.ByteString qualified as BS
 import Data.Char qualified as Char
 import Data.Functor
@@ -30,10 +31,35 @@ day = 11
 
 run :: IO ()
 run = do
-  intStrs <- words <$> readExample day
-  let ints = read @Int <$> intStrs
-  l ints
-  -- let gridCV = CV.fromLists rows
-  -- l gridCV
-  -- let result = _
-  -- answer result
+  strs <- words <$> readReal day
+  let row0 = parseStone <$> strs
+  l row0
+  let steps = iterateM stepStone row0
+      step n = head $ drop n steps
+  l $ step 0
+  l $ step 1
+  l $ step 6
+  let result = length $ step 25
+  answer result
+
+type Row = [Stone]
+type Stone = Int
+
+stepStone :: Stone -> [Stone]
+stepStone stone
+  | stone == 0 = [1]
+  | Just (l, r) <- splitEvenDigits stone = [l, r]
+  | otherwise = [stone * 2024]
+
+splitEvenDigits :: Int -> Maybe (Int, Int)
+splitEvenDigits n =
+  let digits = show n
+      digitCount = length digits
+  in if digitCount `mod` 2 == 0
+      then
+        Just . bimap read read $ splitAt (digitCount `div` 2) digits
+      else
+        Nothing
+
+parseStone :: String -> Stone
+parseStone = read

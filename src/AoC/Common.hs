@@ -23,6 +23,9 @@ readData day file = readFile $ (dataFolder day) </> file
 readExample :: Int -> IO String
 readExample day = readData day "example.txt"
 
+readExample2 :: Int -> IO String
+readExample2 day = readData day "example2.txt"
+
 readReal :: Int -> IO String
 readReal day = readData day "real.txt"
 
