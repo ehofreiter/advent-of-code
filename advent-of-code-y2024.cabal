@@ -41,6 +41,10 @@ library
       AoC.Y2024.D09.P2
       AoC.Y2024.D10.P1
       AoC.Y2024.D10.P2
+      AoC.Y2024.D11.P1
+      AoC.Y2024.D11.P2
+      AoC.Y2024.D12.P1
+      AoC.Y2024.D12.P2
   other-modules:
       Paths_advent_of_code_y2024
   hs-source-dirs:
