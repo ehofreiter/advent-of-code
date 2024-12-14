@@ -1,4 +1,4 @@
-module AoC.Y2024.D09.P2 where
+module AoC.Y2024.D00.P2 where
 
 import Control.Applicative ((<|>))
 import Data.Attoparsec.Text qualified as P
