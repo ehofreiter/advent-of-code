@@ -4,6 +4,7 @@ import Control.Applicative ((<|>))
 import Data.Attoparsec.Text qualified as P
 import Data.ByteString qualified as BS
 import Data.Char qualified as Char
+import Data.Either
 import Data.Functor
 import Data.Functor.WithIndex
 import Data.List qualified as List
