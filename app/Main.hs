@@ -6,4 +6,4 @@ import AoC.Y2024.D12.P1 qualified as D12.P1
 import AoC.Y2024.D12.P2 qualified as D12.P2
 
 main :: IO ()
-main = D11.P2.run
+main = D12.P2.run

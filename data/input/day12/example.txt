@@ -1,2 +1,4 @@
-day12
-example.txt
+AAAA
+BBCD
+BBCC
+EEEC
