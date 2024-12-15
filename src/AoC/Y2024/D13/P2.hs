@@ -17,6 +17,7 @@ import Data.Text qualified as T
 import System.FilePath
 import Text.Read qualified as Read
 import Linear hiding (E)
+import Control.Lens hiding (E)
 import Data.Foldable
 
 import AoC.Common
@@ -29,32 +30,26 @@ day = 13
 
 ----------------------------------------
 
+prizeShift :: Int
+prizeShift = 10^13
+
+updatePrize :: Machine -> Machine
+updatePrize m = m { mPrize = mPrize m ^+^ V2 prizeShift prizeShift }
+
 run :: IO ()
 run = do
-  rows <- lines <$> readExample day
+  rows <- lines <$> readReal day
   let blocks = Split.splitOn [""] rows
-      machines = parseMachine <$> blocks
-  traverse_ l machines
+      machines = updatePrize . parseMachine <$> blocks
+  -- traverse_ l machines
   -- l [5,4..1]
-  let costs = machineCost <$> machines
-      result = sum $ Maybe.fromMaybe 0 <$> costs
+  let solutions = Maybe.mapMaybe solve machines
+  traverse_ l solutions
+  let costs = moveCost <$> solutions
+      result = sum costs
   answer result
 
 type Move = (Int, Int) -- Times button A pressed, times button B pressed
-
-machineCost :: Machine -> Maybe Int
-machineCost m = moveCost <$> Maybe.listToMaybe (validMoves m)
-
-validMoves :: Machine -> [Move]
-validMoves m = filter (flip isMoveValid m) (allMoves m)
-
-allMoves :: Machine -> [Move]
-allMoves m =
-  let V2 maxAX maxAY = liftI2 div (mPrize m) (mMoveA m)
-      V2 maxBX maxBY = liftI2 div (mPrize m) (mMoveB m)
-      maxA = min maxAX maxAY
-      maxB = min maxBX maxBY
-  in (,) <$> [maxA, maxA-1 .. 0] <*> [maxB, maxB-1 .. 0]
 
 isMoveValid :: Move -> Machine -> Bool
 isMoveValid move m = testMove move m == mPrize m
@@ -65,6 +60,31 @@ testMove (countA, countB) m =
 
 moveCost :: Move -> Int
 moveCost (countA, countB) = countA * 3 + countB * 1
+
+solve :: Machine -> Maybe Move
+solve m =
+  let av@(V2 ax ay) = mMoveA m
+      bv@(V2 bx by) = mMoveB m
+      pv@(V2 px py) = mPrize m
+      factors = (div (lcm ax ay) <$> av) * V2 1 (-1)
+      (countB, modB) = (mPrize m `dot` factors) `divMod` (mMoveB m `dot` factors)
+      (countA, modA) = (px - bx*countB) `divMod` ax
+  in if modB == 0 && modA == 0
+      then Just (countA, countB)
+      else Nothing
+
+machineToEq :: Machine -> Equation
+machineToEq m =
+  let (V2 ax ay) = mMoveA m
+      (V2 bx by) = mMoveB m
+      (V2 px py) = mPrize m
+  in Equation (V3 ax bx px) (V3 ay by py)
+
+data Equation = Equation
+  { eqX :: V3 Int
+  , eqY :: V3 Int
+  }
+  deriving (Eq, Ord, Show)
 
 data Machine = Machine
   { mMoveA :: V2 Int
