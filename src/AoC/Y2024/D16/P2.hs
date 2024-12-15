@@ -1,4 +1,4 @@
-module AoC.Y2024.D00.P2 where
+module AoC.Y2024.D16.P2 where
 
 import Control.Lens
 import Control.Applicative ((<|>))
@@ -26,7 +26,7 @@ import AoC.CoordVec qualified as CV
 type Loc = CV.Coord
 
 day, part :: Int
-(day, part) = (00, 2)
+(day, part) = (16, 2)
 
 ----------------------------------------
 

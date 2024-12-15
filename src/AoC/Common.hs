@@ -41,6 +41,14 @@ answer x = do
   putStrLn $ "ANSWER:"
   print x
 
+printHeader :: Int -> Int -> IO ()
+printHeader day part = do
+  putStrLn $ "Day " <> show day <> " Part " <> show part
+  printHoriz
+
+printHoriz :: IO ()
+printHoriz = putStrLn $ replicate 40 '-'
+
 -- | Creates a histogram from a list of values, mapping the number of
 -- occurrences of each value in the given list.
 -- >>> mkHistogram "NNNCNCCHHNNNNH"

@@ -25,13 +25,14 @@ import AoC.CoordVec qualified as CV
 
 type Loc = CV.Coord
 
-day :: Int
-day = 0
+day, part :: Int
+(day, part) = (00, 1)
 
 ----------------------------------------
 
 run :: IO ()
 run = do
+  printHeader day part
   rows <- lines <$> readExample day
   traverse_ l rows
   -- let gridCV = CV.fromLists rows
