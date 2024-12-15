@@ -1,5 +1,6 @@
 module AoC.Y2024.D00.P1 where
 
+import Control.Lens
 import Control.Applicative ((<|>))
 import Data.Attoparsec.Text qualified as P
 import Data.ByteString qualified as BS

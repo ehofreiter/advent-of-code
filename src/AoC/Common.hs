@@ -26,6 +26,9 @@ readExample day = readData day "example.txt"
 readExample2 :: Int -> IO String
 readExample2 day = readData day "example2.txt"
 
+readExample3 :: Int -> IO String
+readExample3 day = readData day "example3.txt"
+
 readReal :: Int -> IO String
 readReal day = readData day "real.txt"
 
