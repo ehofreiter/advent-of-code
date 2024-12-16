@@ -2,12 +2,13 @@
 module AoC.Common where
 
 import System.FilePath
-import           Data.Foldable
-import           Data.List.Split
-import qualified Data.Map.Strict as Map
-import qualified Data.Sequence as Seq
-import           Data.Sequence (Seq((:|>), (:<|)), (><))
-import qualified Data.Set as Set
+import Data.Foldable
+import Data.List.Split
+import Data.Map.Strict qualified as Map
+import Data.List.NonEmpty qualified as NE
+import Data.Sequence qualified as Seq
+import Data.Sequence (Seq((:|>), (:<|)), (><))
+import Data.Set qualified as Set
 
 loadFile :: FilePath -> IO [String]
 loadFile filePath = do
@@ -48,6 +49,9 @@ printHeader day part = do
 
 printHoriz :: IO ()
 printHoriz = putStrLn $ replicate 40 '-'
+
+invertMap :: (Ord v) => Map.Map k v -> Map.Map v (NE.NonEmpty k)
+invertMap m = Map.fromListWith (<>) [(v, NE.singleton k) | (k, v) <- Map.toList m]
 
 -- | Creates a histogram from a list of values, mapping the number of
 -- occurrences of each value in the given list.
