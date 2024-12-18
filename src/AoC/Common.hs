@@ -107,3 +107,13 @@ getInputLn errMsg f = do
     Nothing -> do
       putStrLn errMsg
       getInputLn errMsg f
+
+rightToMaybe :: Either a b -> Maybe b
+rightToMaybe = \case
+  Right x -> Just x
+  Left _ -> Nothing
+
+leftToMaybe :: Either a b -> Maybe a
+leftToMaybe = \case
+  Right _ -> Nothing
+  Left x -> Just x
