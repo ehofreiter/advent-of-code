@@ -53,6 +53,8 @@ library
       AoC.Y2024.D15.P2
       AoC.Y2024.D16.P1
       AoC.Y2024.D16.P2
+      AoC.Y2024.D17.P1
+      AoC.Y2024.D17.P2
   other-modules:
       Paths_advent_of_code_y2024
   hs-source-dirs:
@@ -71,6 +73,7 @@ library
     , linear
     , mtl
     , parsec
+    , safe
     , split
     , text
     , vector
@@ -98,6 +101,7 @@ executable advent-of-code-y2024-exe
     , linear
     , mtl
     , parsec
+    , safe
     , split
     , text
     , vector
