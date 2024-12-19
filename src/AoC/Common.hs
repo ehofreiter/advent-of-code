@@ -9,6 +9,7 @@ import Data.List.NonEmpty qualified as NE
 import Data.Sequence qualified as Seq
 import Data.Sequence (Seq((:|>), (:<|)), (><))
 import Data.Set qualified as Set
+import Data.Text qualified as T
 
 loadFile :: FilePath -> IO [String]
 loadFile filePath = do
@@ -36,6 +37,12 @@ readReal day = readData day "real.txt"
 l :: (Show a) => a -> IO ()
 --l _x = pure ()
 l = print
+
+s :: (Show a) => a -> String
+s = show
+
+t :: (Show a) => a -> T.Text
+t = T.pack . show
 
 answer :: (Show a) => a -> IO ()
 answer x = do
